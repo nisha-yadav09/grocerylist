@@ -7,14 +7,14 @@
   <body>
     <h1><%= title %></h1>
     <p></p>
-    <% if (groceries.length === 0) { %>
+    <% if (Groceries.length === 0) { %>
       <h3>There are no groceries yet!</h3>
     <% } else { %>
       <section>
-        <% groceries.forEach(function(g, i) { %>
+        <% Groceries.forEach(function(g, i) { %>
           <article>
-            <p> <%= g.item %><%= g.done ? false : ' Still Needed' %></p>
-            <form action="/groceries/<%= i %>" method="POST">
+            <%= g.item %><%= g.done ? false : ' - Still Needed' %>
+              <form action="/groceries/<%= i %>?_method=DELETE" method="POST">
               <button type="submit">DELETE</button>
             </form>
           </article>
