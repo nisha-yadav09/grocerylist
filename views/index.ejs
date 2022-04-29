@@ -13,10 +13,15 @@
       <section>
         <% Groceries.forEach(function(g, i) { %>
           <article>
-            <%= g.item %><%= g.done ? false : ' - Still Needed' %>
-              <form action="/groceries/<%= i %>?_method=DELETE" method="POST">
-              <button type="submit">DELETE</button>
-            </form>
+            <ul>
+              <li>
+                <%= g.item %><%= g.done ? false : ' - Still Needed' %>
+                <form action="/groceries/<%= i %>?_method=DELETE" method="POST">
+                  <button type="submit">DELETE</button>
+                </form>
+              </li>
+            </ul>
+             
           </article>
         <% }) %>
       </section>  
