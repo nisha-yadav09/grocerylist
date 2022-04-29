@@ -1,11 +1,30 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title>Unit 2 Assessment</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
     <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <p></p>
+    <% if (groceries.length === 0) { %>
+      <h3>There are no groceries yet!</h3>
+    <% } else { %>
+      <section>
+        <% groceries.forEach(function(g, i) { %>
+          <article>
+            <p> <%= g.item %><%= g.done ? false : ' Still Needed' %></p>
+            <form action="/groceries/<%= i %>" method="POST">
+              <button type="submit">DELETE</button>
+            </form>
+          </article>
+        <% }) %>
+      </section>  
+      <% } %>
+     <hr>
+      <form action="/" method="POST">
+        <input type="text" name="item">
+        <button type="submit">ADD Grocery</button>
+      </form>
   </body>
 </html>
